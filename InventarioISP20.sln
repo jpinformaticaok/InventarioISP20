@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Client", "WebApp\Web
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMovil", "AppMovil\AppMovil.csproj", "{2AA0B444-543D-42D6-A6E7-71916B594CFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola", "Consola\Consola.csproj", "{8223F0B3-BB2D-42BA-ABBF-D36492C00F4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{2AA0B444-543D-42D6-A6E7-71916B594CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AA0B444-543D-42D6-A6E7-71916B594CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AA0B444-543D-42D6-A6E7-71916B594CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8223F0B3-BB2D-42BA-ABBF-D36492C00F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8223F0B3-BB2D-42BA-ABBF-D36492C00F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8223F0B3-BB2D-42BA-ABBF-D36492C00F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8223F0B3-BB2D-42BA-ABBF-D36492C00F4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
