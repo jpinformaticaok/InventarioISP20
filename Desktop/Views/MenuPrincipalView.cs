@@ -47,5 +47,11 @@ namespace Desktop.Views
             ubicacionesView.MdiParent = this;
             ubicacionesView.Show();
         }
+
+        private void subMenuClientes_Click(object sender, EventArgs e)
+        {
+            ClientesView clientesView = new();
+            clientesView.ShowDialog();
+        }
     }
 }

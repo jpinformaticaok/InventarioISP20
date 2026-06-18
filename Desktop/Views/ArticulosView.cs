@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Consola.Class;
+using System.Net;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace Desktop.Views
 {
@@ -15,6 +10,12 @@ namespace Desktop.Views
         public ArticulosView()
         {
             InitializeComponent();
+        }
+
+        private void BtnAgregarAlumno_Click(object sender, EventArgs e)
+        {
+            Alumno alumno = new Alumno("Juan", "Aguero");
+            ListAlumnos.Items.Add(alumno);
         }
     }
 }

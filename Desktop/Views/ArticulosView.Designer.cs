@@ -28,12 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ArticulosView";
+            ListAlumnos = new ListBox();
+            BtnAgregarAlumno = new Button();
+            SuspendLayout();
+            // 
+            // ListAlumnos
+            // 
+            ListAlumnos.FormattingEnabled = true;
+            ListAlumnos.ItemHeight = 15;
+            ListAlumnos.Location = new Point(266, 36);
+            ListAlumnos.Name = "ListAlumnos";
+            ListAlumnos.Size = new Size(219, 214);
+            ListAlumnos.TabIndex = 0;
+            // 
+            // BtnAgregarAlumno
+            // 
+            BtnAgregarAlumno.Location = new Point(305, 256);
+            BtnAgregarAlumno.Name = "BtnAgregarAlumno";
+            BtnAgregarAlumno.Size = new Size(138, 23);
+            BtnAgregarAlumno.TabIndex = 1;
+            BtnAgregarAlumno.Text = "Agregar Alumno";
+            BtnAgregarAlumno.UseVisualStyleBackColor = true;
+            BtnAgregarAlumno.Click += BtnAgregarAlumno_Click;
+            // 
+            // ArticulosView
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(BtnAgregarAlumno);
+            Controls.Add(ListAlumnos);
+            Name = "ArticulosView";
+            Text = "ArticulosView";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private ListBox ListAlumnos;
+        private Button BtnAgregarAlumno;
     }
 }

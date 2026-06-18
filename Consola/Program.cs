@@ -23,6 +23,7 @@ public class Program
         bici.tieneCampanilla = true;
         Console.WriteLine($"La bicicleta tiene una velocidad de {bici.velocidad} km/h y {(bici.tieneCampanilla ? "tiene" : "no tiene")} campanilla.");*/
         Ejercicio3();
+        Console.ReadKey();
     }
 
     private static void Ejercicio3()
@@ -36,6 +37,14 @@ public class Program
         {
                 persona.Hablar();
         }
+        estudiante1.Nombre = "Juan Pablo";
+        DateTime ahora = new DateTime();
+        ahora = DateTime.Now;
+        Console.WriteLine(ahora);
+        Object prueba = new Object();
+        Console.WriteLine(prueba.ToString());
+        Console.WriteLine(estudiante1.ToString());
+        
     }
 
     private static void Ejercicio1()

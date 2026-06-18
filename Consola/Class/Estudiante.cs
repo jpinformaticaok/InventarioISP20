@@ -31,5 +31,10 @@ namespace Consola.Class
         {
             Console.WriteLine($"Hola, soy estudiante!!");
         }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

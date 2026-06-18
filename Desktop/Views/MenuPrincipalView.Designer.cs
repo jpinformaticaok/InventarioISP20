@@ -34,6 +34,7 @@
             SubMenuCategorias = new FontAwesome.Sharp.IconMenuItem();
             SubMenuPrestamos = new FontAwesome.Sharp.IconMenuItem();
             SubMenuUbicaciones = new FontAwesome.Sharp.IconMenuItem();
+            subMenuClientes = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             SubMenuSalirDelSistema = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
@@ -50,7 +51,7 @@
             // 
             // iconMenuItem1
             // 
-            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubMenuCategorias, SubMenuPrestamos, SubMenuUbicaciones });
+            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubMenuCategorias, SubMenuPrestamos, SubMenuUbicaciones, subMenuClientes });
             iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.House;
             iconMenuItem1.IconColor = Color.Black;
             iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -90,13 +91,23 @@
             // 
             // SubMenuUbicaciones
             // 
-            SubMenuUbicaciones.IconChar = FontAwesome.Sharp.IconChar.None;
+            SubMenuUbicaciones.IconChar = FontAwesome.Sharp.IconChar.Location;
             SubMenuUbicaciones.IconColor = Color.Black;
             SubMenuUbicaciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
             SubMenuUbicaciones.Name = "SubMenuUbicaciones";
             SubMenuUbicaciones.Size = new Size(180, 22);
             SubMenuUbicaciones.Text = "Ubicaciones";
             SubMenuUbicaciones.Click += SubMenuUbicaciones_Click;
+            // 
+            // subMenuClientes
+            // 
+            subMenuClientes.IconChar = FontAwesome.Sharp.IconChar.Users;
+            subMenuClientes.IconColor = Color.Black;
+            subMenuClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuClientes.Name = "subMenuClientes";
+            subMenuClientes.Size = new Size(180, 22);
+            subMenuClientes.Text = "Clientes";
+            subMenuClientes.Click += subMenuClientes_Click;
             // 
             // iconMenuItem2
             // 
@@ -144,5 +155,6 @@
         private FontAwesome.Sharp.IconMenuItem SubMenuCategorias;
         private FontAwesome.Sharp.IconMenuItem SubMenuPrestamos;
         private FontAwesome.Sharp.IconMenuItem SubMenuUbicaciones;
+        private FontAwesome.Sharp.IconMenuItem subMenuClientes;
     }
 }

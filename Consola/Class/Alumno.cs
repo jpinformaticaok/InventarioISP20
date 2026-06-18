@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,12 @@ namespace Consola.Class
         int dni;
         DateOnly fecha_nacimiento; // DateOnly es un tipo de dato que representa solo la fecha, sin la hora. Es útil para almacenar fechas de nacimiento, fechas de eventos, etc.
 
+        public Alumno()
+        {
+            
+        }
         // Constructor de la clase Alumno, se ejecuta cada vez que se crea un nuevo objeto de tipo Alumno
-        public Alumno(string nombre, string apellido, int dni, DateOnly fecha_nacimiento)
+        public Alumno(string nombre, string apellido, int dni=0, DateOnly fecha_nacimiento = new DateOnly())
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -31,6 +36,9 @@ namespace Consola.Class
             return $"Nombre: {nombre} {apellido}\nDNI: {dni}\nFecha de nacimiento: {fecha_nacimiento.ToString("dd/MM/yyyy")}";
         }
 
-        
+        public override string ToString()
+        {
+            return $"{nombre} {apellido}";
+        }
     }
 }
