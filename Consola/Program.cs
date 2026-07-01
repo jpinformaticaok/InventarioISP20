@@ -29,13 +29,13 @@ public class Program
     private static void Ejercicio3()
     {
         Persona[] grupo = new Persona[2];
-        Persona persona1 = new ();
-        Estudiante estudiante1 = new ();
+        Persona persona1 = new();
+        Estudiante estudiante1 = new();
         grupo[0] = persona1;
         grupo[1] = estudiante1;
         foreach (Persona persona in grupo)
         {
-                persona.Hablar();
+            persona.Hablar();
         }
         estudiante1.Nombre = "Juan Pablo";
         DateTime ahora = new DateTime();
@@ -44,7 +44,7 @@ public class Program
         Object prueba = new Object();
         Console.WriteLine(prueba.ToString());
         Console.WriteLine(estudiante1.ToString());
-        
+
     }
 
     private static void Ejercicio1()
@@ -53,7 +53,7 @@ public class Program
         persona1.nombre = "Juan Pablo";
         Console.WriteLine($"La edad de {persona1.nombre}"/* es: {persona1.edad}"*/);
         persona1.CumplirAnios();
-        
+
     }
 
     private static void ProbamosMetodosConDiferentesValoresDeRetorno()
@@ -119,7 +119,7 @@ public class Program
         // Creamos un vector de 12 meses del año
         string[] meses = new string[12] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
         // Creamos una matriz de 3x2 con nombres y apellidos
-        string[,] nosotros = new string[3, 2] { { "Juan", "Aguero" }, { "Majo", "Longoni" }, { "Marcelo", "Albertissi"} };
+        string[,] nosotros = new string[3, 2] { { "Juan", "Aguero" }, { "Majo", "Longoni" }, { "Marcelo", "Albertissi" } };
 
         meses[0] = "ENERO";
         meses[11] = "DICIEMBRE";
@@ -127,7 +127,7 @@ public class Program
         nosotros[1, 0] = "MARIA JOSE";
         nosotros[0, 1] = "BARRIOS";
 
-        int[] edades = [ 20, 25, 30, 35, 40 ];
+        int[] edades = [20, 25, 30, 35, 40];
     }
 
     private static void CapturaDeValoresDelUsuario()

@@ -53,5 +53,11 @@ namespace Desktop.Views
             ClientesView clientesView = new();
             clientesView.ShowDialog();
         }
+
+        private void subMenuEquipos_Click(object sender, EventArgs e)
+        {
+            EquiposView equiposView = new();
+            equiposView.ShowDialog();
+        }
     }
 }

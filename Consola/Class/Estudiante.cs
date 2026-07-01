@@ -17,15 +17,15 @@ namespace Consola.Class
         public int Edad { get; set; }
 
         // Creamos una propiedad llamada DatosCompletos que concatena todos los datos del estudiante y los devuelve al llamarla
-        public string DatosCompletos 
+        public string DatosCompletos
         {
             get { return $"Hola, soy el estudiante {Nombre} y tengo {Edad} años."; }
         }
 
-         public void Saludar()
-         {
-             Console.WriteLine($"Hola, soy el estudiante {Nombre} y tengo {Edad} años.");
-         }
+        public void Saludar()
+        {
+            Console.WriteLine($"Hola, soy el estudiante {Nombre} y tengo {Edad} años.");
+        }
 
         public override void Hablar()
         {

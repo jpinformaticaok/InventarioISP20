@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Consola.Class
+﻿namespace Consola.Class
 {
     public partial class Alumno
     {
@@ -17,10 +10,10 @@ namespace Consola.Class
 
         public Alumno()
         {
-            
+
         }
         // Constructor de la clase Alumno, se ejecuta cada vez que se crea un nuevo objeto de tipo Alumno
-        public Alumno(string nombre, string apellido, int dni=0, DateOnly fecha_nacimiento = new DateOnly())
+        public Alumno(string nombre, string apellido, int dni = 0, DateOnly fecha_nacimiento = new DateOnly())
         {
             this.nombre = nombre;
             this.apellido = apellido;

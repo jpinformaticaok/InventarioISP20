@@ -111,17 +111,32 @@ namespace Desktop.Views
             //capturamos el cliente seleccionado en el DataGridView
             if (dataGridClientes.CurrentRow != null)
             {
-                clienteModificado = (Cliente)dataGridClientes.CurrentRow.DataBoundItem;
-                bool borradoOk = await clientesService.DeleteClienteAsync(clienteModificado.id);
-                if (!borradoOk)
+                var clienteAEliminar = (Cliente)dataGridClientes.CurrentRow.DataBoundItem;
+                // Preguntamos al usuario si está seguro de eliminar el cliente
+                var confirmResult = MessageBox.Show($"¿Está seguro de eliminar al cliente {clienteAEliminar.firstname} {clienteAEliminar.lastname}?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    tabControl.SelectedTab = tabPageLista;
+                    bool borradoOk = await clientesService.DeleteClienteAsync(clienteModificado.id);
+                    if (!borradoOk)
+                    {
+                        tabControl.SelectedTab = tabPageLista;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Cliente {clienteAEliminar.firstname} {clienteAEliminar.lastname} eliminado correctamente");
+                        LoadClientes();
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Cliente eliminado correctamente");
-                    LoadClientes();
-                }
+            }
+        }
+
+        private void txtBusqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //chequeamos si la tecla presionada es Enter y pulsamos el botón de buscar
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnBuscar.PerformClick();
+                e.Handled = true; // Evita que el sonido de "ding" se reproduzca
             }
         }
     }

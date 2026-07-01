@@ -1,6 +1,4 @@
 ﻿using Consola.Class;
-using System.Net;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace Desktop.Views

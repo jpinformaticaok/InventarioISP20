@@ -37,6 +37,7 @@
             subMenuClientes = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             SubMenuSalirDelSistema = new FontAwesome.Sharp.IconMenuItem();
+            subMenuEquipos = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             // 
             // iconMenuItem1
             // 
-            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubMenuCategorias, SubMenuPrestamos, SubMenuUbicaciones, subMenuClientes });
+            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubMenuCategorias, SubMenuPrestamos, SubMenuUbicaciones, subMenuClientes, subMenuEquipos });
             iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.House;
             iconMenuItem1.IconColor = Color.Black;
             iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -129,6 +130,16 @@
             SubMenuSalirDelSistema.Text = "Salir del sistema...";
             SubMenuSalirDelSistema.Click += SubMenuSalirDelSistema_Click;
             // 
+            // subMenuEquipos
+            // 
+            subMenuEquipos.IconChar = FontAwesome.Sharp.IconChar.Computer;
+            subMenuEquipos.IconColor = Color.Black;
+            subMenuEquipos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuEquipos.Name = "subMenuEquipos";
+            subMenuEquipos.Size = new Size(180, 22);
+            subMenuEquipos.Text = "Equipos";
+            subMenuEquipos.Click += subMenuEquipos_Click;
+            // 
             // MenuPrincipalView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -156,5 +167,6 @@
         private FontAwesome.Sharp.IconMenuItem SubMenuPrestamos;
         private FontAwesome.Sharp.IconMenuItem SubMenuUbicaciones;
         private FontAwesome.Sharp.IconMenuItem subMenuClientes;
+        private FontAwesome.Sharp.IconMenuItem subMenuEquipos;
     }
 }

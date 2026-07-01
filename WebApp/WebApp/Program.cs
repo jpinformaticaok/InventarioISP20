@@ -1,4 +1,3 @@
-using WebApp.Client.Pages;
 using WebApp.Components;
 
 var builder = WebApplication.CreateBuilder(args);
