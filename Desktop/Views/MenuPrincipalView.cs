@@ -59,5 +59,17 @@ namespace Desktop.Views
             EquiposView equiposView = new();
             equiposView.ShowDialog();
         }
+
+        private void subMenuGemini_Click(object sender, EventArgs e)
+        {
+            ProbandoIA_Gemini probandoIA_Gemini = new();
+            probandoIA_Gemini.ShowDialog();
+        }
+
+        private void subMenuOpenrouter_Click(object sender, EventArgs e)
+        {
+            ProbandoOpenrouter probandoOpenrouter = new();
+            probandoOpenrouter.ShowDialog();
+        }
     }
 }

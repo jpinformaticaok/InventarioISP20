@@ -120,7 +120,7 @@ namespace Desktop.Services
             try
             {
                 string urlDelete = $"?id=eq.{id}";
-                var response = httpClient.DeleteAsync(urlDelete).Result;
+                var response = await httpClient.DeleteAsync(urlDelete);
                 if (response.IsSuccessStatusCode)
                 {
                     return true;

@@ -80,18 +80,5 @@ namespace Desktop.Views
             }
             await CargarGrid();
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (dgvTiposEquipos.CurrentRow == null)
-            {
-                MessageBox.Show("No hay ninguna fila seleccionada.");
-                return;
-            }
-
-            var item = (TipoEquipo)dgvTiposEquipos.CurrentRow.DataBoundItem;
-
-            MessageBox.Show($"ID: {item.id_tipo_equipo}");
-        }
     }
 }

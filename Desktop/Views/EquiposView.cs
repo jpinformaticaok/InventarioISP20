@@ -1,5 +1,7 @@
 ﻿using Desktop.Models;
 using Desktop.Services;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Desktop.Views
 {
@@ -36,6 +38,8 @@ namespace Desktop.Views
             {
                 dataGridEquipos.DataSource = clientes;
             }
+            // Ordena el DataGridView por la columna "id_equipo" en orden ascendente
+            dataGridEquipos.Sort(dataGridEquipos.Columns["id_equipo"], ListSortDirection.Ascending);
         }
 
         private void ClearTextBox()
