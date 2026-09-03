@@ -35,13 +35,6 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
-      - name: Configurar cadena de conexión PostgreSQL
-        run: |
-          az webapp config appsettings set \
-            --resource-group TU_RESOURCE_GROUP \
-            --name api-inventario-ale \
-            --settings "ConnectionStrings__postgresRemote=${{ secrets.POSTGRESREMOTE }}"
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -61,7 +54,13 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_438C3B2A70BA43F59C1CC3FF9B4ACCAD }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8761BAFA8AA14960BE5293AE445FA2A0 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_31C2C33C6C6841FBB615457BD9134305 }}
-
+      - name: Configurar cadena de conexión PostgreSQL
+        run: |
+          az webapp config appsettings set \
+            --resource-group api-inventario-jp_group \
+            --name api-inventario-jp \
+            --settings "ConnectionStrings__postgresRemote=${{ secrets.POSTGRESREMOTE }}"
+            
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
