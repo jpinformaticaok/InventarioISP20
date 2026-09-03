@@ -24,7 +24,7 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        run: dotnet build Backend/Backend.csproj--configuration Release
+        run: dotnet build Backend/Backend.csproj --configuration Release
 
       - name: dotnet publish
         run: dotnet publish Backend/Backend.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
@@ -34,6 +34,13 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
+
+      - name: Configurar cadena de conexión PostgreSQL
+        run: |
+          az webapp config appsettings set \
+            --resource-group TU_RESOURCE_GROUP \
+            --name api-inventario-ale \
+            --settings "ConnectionStrings__postgresRemote=${{ secrets.POSTGRESREMOTE }}"
 
   deploy:
     runs-on: ubuntu-latest
