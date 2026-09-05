@@ -21,7 +21,7 @@ namespace Backend.Data
         //Creamos el metodo OnConfiguring para configurar la cadena de conexion a la base de datos PostgreSQL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
+           /* if (!optionsBuilder.IsConfigured)
             {
                 // Configurar la cadena de conexión a la base de datos PostgreSQL
                 //optionsBuilder.UseNpgsql();
@@ -31,19 +31,10 @@ namespace Backend.Data
                     .AddEnvironmentVariables()
                     .Build();
 
-                //string cadenaConexion = configuration.GetConnectionString("mysqlRemote");
+                //string cadenaConexion = configuration.GetConnectionString("postgresLocal");
                 var cadenaConexion = configuration.GetConnectionString("postgresRemote");
 
                 optionsBuilder.UseNpgsql(cadenaConexion);
-            }
-
-            /*if (!optionsBuilder.IsConfigured)
-            {
-                // Configurar la cadena de conexión a la base de datos PostgreSQL
-                //optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=InventarioDB;Username=postgres;Password=1234");
-
-                // Configurar la cadena de conexión a la base de datos PostgreSQL
-                optionsBuilder.UseNpgsql("Host=up-de-fra1-postgresql-3.db.run-on-seenode.com;Port=11550;Database=db_rgz7ihwabq16;Username=db_rgz7ihwabq16;Password=dKvdTmomPFcmT8rXcN9SNFdi");
             }*/
         }
 

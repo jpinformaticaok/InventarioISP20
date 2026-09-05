@@ -23,6 +23,15 @@ namespace Backend.Controllers
             return await _context.Clientes.ToListAsync();
         }
 
+        // Devolvemos el total de clientes que no están eliminados
+        [HttpGet("total")]
+        public async Task<ActionResult<int>> GetTotalClientes()
+        {
+            var totalClientes = await _context.Clientes.CountAsync(c => !c.isDeleted);
+            return Ok(totalClientes);
+        }
+
+
         // GET: api/Clientes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)

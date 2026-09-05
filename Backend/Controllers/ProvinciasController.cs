@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Data;
 using Services.Models;
@@ -23,9 +18,11 @@ namespace Backend.Controllers
 
         // GET: api/Provincias
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Provincia>>> GetProvincia()
+        public async Task<ActionResult<IEnumerable<Provincia>>> GetProvincias()
         {
-            return await _context.Provincias.ToListAsync();
+            return await _context.Provincias
+                .Include(p => p.Pais) // Incluimos la entidad relacionada Pais
+                .ToListAsync();
         }
 
         // GET: api/Provincias/5
@@ -84,7 +81,7 @@ namespace Backend.Controllers
             return CreatedAtAction("GetProvincia", new { id = provincia.Id }, provincia);
         }
 
-        // DELETE: api/Localidades/5
+        // DELETE: api/Provincias/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProvincia(int id)
         {
@@ -102,14 +99,14 @@ namespace Backend.Controllers
 
         private bool ProvinciaExists(int id)
         {
-            return _context.Localidades.Any(e => e.Id == id);
+            return _context.Provincias.Any(e => e.Id == id);
         }
 
-        // devolvemos el total de localidades que no estan eliminadas
+        // devolvemos el total de provincias que no estan eliminadas
         [HttpGet("total")]
-        public async Task<ActionResult<int>> GetTotalLocalidades()
+        public async Task<ActionResult<int>> GetTotalProvincias()
         {
-            return await _context.Localidades.CountAsync(c => !c.isDeleted);
+            return await _context.Provincias.CountAsync(c => !c.isDeleted);
         }
     }
 }

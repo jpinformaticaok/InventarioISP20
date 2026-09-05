@@ -1,5 +1,4 @@
-﻿
-namespace Services.Models
+﻿namespace Services.Models
 {
     public class Localidad
     {
