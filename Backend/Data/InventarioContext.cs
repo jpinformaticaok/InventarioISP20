@@ -21,7 +21,7 @@ namespace Backend.Data
         //Creamos el metodo OnConfiguring para configurar la cadena de conexion a la base de datos PostgreSQL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           /* if (!optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)
             {
                 // Configurar la cadena de conexión a la base de datos PostgreSQL
                 //optionsBuilder.UseNpgsql();
@@ -35,7 +35,7 @@ namespace Backend.Data
                 var cadenaConexion = configuration.GetConnectionString("postgresRemote");
 
                 optionsBuilder.UseNpgsql(cadenaConexion);
-            }*/
+            }
         }
 
         //Creamos el metodo OnModelCreating para insertar datos semilla en la tabla Clientes
@@ -57,9 +57,9 @@ namespace Backend.Data
             );
 
             modelBuilder.Entity<Provincia>().HasData(
-                new Provincia { Id = 1, Name = "Buenos Aires" },
-                new Provincia { Id = 2, Name = "Córdoba" },
-                new Provincia { Id = 3, Name = "Santa Fe" }
+                new Provincia { Id = 1, Name = "Buenos Aires", PaisId = 1 },
+                new Provincia { Id = 2, Name = "Córdoba", PaisId = 1 },
+                new Provincia { Id = 3, Name = "Santa Fe", PaisId = 1 }
             );
 
             modelBuilder.Entity<Pais>().HasData(

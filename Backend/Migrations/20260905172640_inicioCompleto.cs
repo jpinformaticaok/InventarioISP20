@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class inicio : Migration
+    public partial class inicioCompleto : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,11 +35,18 @@ namespace Backend.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
+                    PaisId = table.Column<int>(type: "integer", nullable: false),
                     isDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Provincias", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Provincias_Paises_PaisId",
+                        column: x => x.PaisId,
+                        principalTable: "Paises",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,12 +107,12 @@ namespace Backend.Migrations
 
             migrationBuilder.InsertData(
                 table: "Provincias",
-                columns: new[] { "Id", "Name", "isDeleted" },
+                columns: new[] { "Id", "Name", "PaisId", "isDeleted" },
                 values: new object[,]
                 {
-                    { 1, "Buenos Aires", false },
-                    { 2, "Córdoba", false },
-                    { 3, "Santa Fe", false }
+                    { 1, "Buenos Aires", 1, false },
+                    { 2, "Córdoba", 1, false },
+                    { 3, "Santa Fe", 1, false }
                 });
 
             migrationBuilder.InsertData(
@@ -125,9 +132,9 @@ namespace Backend.Migrations
                 columns: new[] { "Id", "Address", "Created_at", "Dni", "Firstname", "Lastname", "LocalidadId", "isDeleted" },
                 values: new object[,]
                 {
-                    { 1, "Calle Falsa 123", new DateTimeOffset(new DateTime(2026, 9, 3, 16, 41, 13, 519, DateTimeKind.Unspecified).AddTicks(8846), new TimeSpan(0, -3, 0, 0, 0)), "12345678", "Juan", "Pérez", 4, false },
-                    { 2, "Avenida Siempre Viva 456", new DateTimeOffset(new DateTime(2026, 9, 3, 16, 41, 13, 519, DateTimeKind.Unspecified).AddTicks(8887), new TimeSpan(0, -3, 0, 0, 0)), "87654321", "María", "González", 4, false },
-                    { 3, "Callejón del Beso 789", new DateTimeOffset(new DateTime(2026, 9, 3, 16, 41, 13, 519, DateTimeKind.Unspecified).AddTicks(8889), new TimeSpan(0, -3, 0, 0, 0)), "11223344", "Pedro", "López", 4, false }
+                    { 1, "Calle Falsa 123", new DateTimeOffset(new DateTime(2026, 9, 5, 14, 26, 39, 885, DateTimeKind.Unspecified).AddTicks(9054), new TimeSpan(0, -3, 0, 0, 0)), "12345678", "Juan", "Pérez", 4, false },
+                    { 2, "Avenida Siempre Viva 456", new DateTimeOffset(new DateTime(2026, 9, 5, 14, 26, 39, 885, DateTimeKind.Unspecified).AddTicks(9090), new TimeSpan(0, -3, 0, 0, 0)), "87654321", "María", "González", 4, false },
+                    { 3, "Callejón del Beso 789", new DateTimeOffset(new DateTime(2026, 9, 5, 14, 26, 39, 885, DateTimeKind.Unspecified).AddTicks(9093), new TimeSpan(0, -3, 0, 0, 0)), "11223344", "Pedro", "López", 4, false }
                 });
 
             migrationBuilder.CreateIndex(
@@ -139,6 +146,11 @@ namespace Backend.Migrations
                 name: "IX_Localidades_ProvinciaId",
                 table: "Localidades",
                 column: "ProvinciaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Provincias_PaisId",
+                table: "Provincias",
+                column: "PaisId");
         }
 
         /// <inheritdoc />
@@ -148,13 +160,13 @@ namespace Backend.Migrations
                 name: "Clientes");
 
             migrationBuilder.DropTable(
-                name: "Paises");
-
-            migrationBuilder.DropTable(
                 name: "Localidades");
 
             migrationBuilder.DropTable(
                 name: "Provincias");
+
+            migrationBuilder.DropTable(
+                name: "Paises");
         }
     }
 }

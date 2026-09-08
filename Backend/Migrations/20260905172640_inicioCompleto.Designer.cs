@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(InventarioContext))]
-    [Migration("20260903194114_inicio")]
-    partial class inicio
+    [Migration("20260905172640_inicioCompleto")]
+    partial class inicioCompleto
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,7 +71,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Address = "Calle Falsa 123",
-                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 3, 16, 41, 13, 519, DateTimeKind.Unspecified).AddTicks(8846), new TimeSpan(0, -3, 0, 0, 0)),
+                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 5, 14, 26, 39, 885, DateTimeKind.Unspecified).AddTicks(9054), new TimeSpan(0, -3, 0, 0, 0)),
                             Dni = "12345678",
                             Firstname = "Juan",
                             Lastname = "Pérez",
@@ -82,7 +82,7 @@ namespace Backend.Migrations
                         {
                             Id = 2,
                             Address = "Avenida Siempre Viva 456",
-                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 3, 16, 41, 13, 519, DateTimeKind.Unspecified).AddTicks(8887), new TimeSpan(0, -3, 0, 0, 0)),
+                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 5, 14, 26, 39, 885, DateTimeKind.Unspecified).AddTicks(9090), new TimeSpan(0, -3, 0, 0, 0)),
                             Dni = "87654321",
                             Firstname = "María",
                             Lastname = "González",
@@ -93,7 +93,7 @@ namespace Backend.Migrations
                         {
                             Id = 3,
                             Address = "Callejón del Beso 789",
-                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 3, 16, 41, 13, 519, DateTimeKind.Unspecified).AddTicks(8889), new TimeSpan(0, -3, 0, 0, 0)),
+                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 5, 14, 26, 39, 885, DateTimeKind.Unspecified).AddTicks(9093), new TimeSpan(0, -3, 0, 0, 0)),
                             Dni = "11223344",
                             Firstname = "Pedro",
                             Lastname = "López",
@@ -216,10 +216,15 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("PaisId")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("isDeleted")
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PaisId");
 
                     b.ToTable("Provincias");
 
@@ -228,18 +233,21 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Name = "Buenos Aires",
+                            PaisId = 1,
                             isDeleted = false
                         },
                         new
                         {
                             Id = 2,
                             Name = "Córdoba",
+                            PaisId = 1,
                             isDeleted = false
                         },
                         new
                         {
                             Id = 3,
                             Name = "Santa Fe",
+                            PaisId = 1,
                             isDeleted = false
                         });
                 });
@@ -264,6 +272,17 @@ namespace Backend.Migrations
                         .IsRequired();
 
                     b.Navigation("Provincia");
+                });
+
+            modelBuilder.Entity("Services.Models.Provincia", b =>
+                {
+                    b.HasOne("Services.Models.Pais", "Pais")
+                        .WithMany()
+                        .HasForeignKey("PaisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pais");
                 });
 #pragma warning restore 612, 618
         }
