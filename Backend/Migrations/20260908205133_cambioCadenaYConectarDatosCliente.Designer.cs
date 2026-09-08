@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(InventarioContext))]
-    partial class InventarioContextModelSnapshot : ModelSnapshot
+    [Migration("20260908205133_cambioCadenaYConectarDatosCliente")]
+    partial class cambioCadenaYConectarDatosCliente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,10 +71,10 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Address = "Calle Falsa 123",
-                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 8, 17, 59, 26, 992, DateTimeKind.Unspecified).AddTicks(4436), new TimeSpan(0, -3, 0, 0, 0)),
-                            Dni = "29720301",
-                            Firstname = "Juan Pablo",
-                            Lastname = "Aguero",
+                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 8, 17, 51, 33, 421, DateTimeKind.Unspecified).AddTicks(1498), new TimeSpan(0, -3, 0, 0, 0)),
+                            Dni = "12345678",
+                            Firstname = "Juan",
+                            Lastname = "Pérez",
                             LocalidadId = 4,
                             isDeleted = false
                         },
@@ -79,7 +82,7 @@ namespace Backend.Migrations
                         {
                             Id = 2,
                             Address = "Avenida Siempre Viva 456",
-                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 8, 17, 59, 26, 992, DateTimeKind.Unspecified).AddTicks(4471), new TimeSpan(0, -3, 0, 0, 0)),
+                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 8, 17, 51, 33, 421, DateTimeKind.Unspecified).AddTicks(1535), new TimeSpan(0, -3, 0, 0, 0)),
                             Dni = "87654321",
                             Firstname = "María",
                             Lastname = "González",
@@ -90,7 +93,7 @@ namespace Backend.Migrations
                         {
                             Id = 3,
                             Address = "Callejón del Beso 789",
-                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 8, 17, 59, 26, 992, DateTimeKind.Unspecified).AddTicks(4474), new TimeSpan(0, -3, 0, 0, 0)),
+                            Created_at = new DateTimeOffset(new DateTime(2026, 9, 8, 17, 51, 33, 421, DateTimeKind.Unspecified).AddTicks(1539), new TimeSpan(0, -3, 0, 0, 0)),
                             Dni = "11223344",
                             Firstname = "Pedro",
                             Lastname = "López",

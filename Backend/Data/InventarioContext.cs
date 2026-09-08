@@ -42,7 +42,7 @@ namespace Backend.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente>().HasData(
-                new Cliente { Id = 1, Firstname = "Juan", Lastname = "Pérez", Dni = "12345678", Address = "Calle Falsa 123", LocalidadId = 4 },
+                new Cliente { Id = 1, Firstname = "Juan Pablo", Lastname = "Aguero", Dni = "29720301", Address = "Calle Falsa 123", LocalidadId = 4 },
                 new Cliente { Id = 2, Firstname = "María", Lastname = "González", Dni = "87654321", Address = "Avenida Siempre Viva 456", LocalidadId = 4 },
                 new Cliente { Id = 3, Firstname = "Pedro", Lastname = "López", Dni = "11223344", Address = "Callejón del Beso 789", LocalidadId = 4 }
             );

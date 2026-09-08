@@ -20,7 +20,9 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
         {
-            return await _context.Clientes.ToListAsync();
+            return await _context.Clientes
+                .Include(c => c.Localidad)
+                .ToListAsync();
         }
 
         // Devolvemos el total de clientes que no están eliminados
