@@ -71,5 +71,11 @@ namespace Desktop.Views
             ProbandoOpenrouter probandoOpenrouter = new();
             probandoOpenrouter.ShowDialog();
         }
+
+        private void subMenuAzure_Click(object sender, EventArgs e)
+        {
+            ClientesApiView clientesApiView = new();
+            clientesApiView.ShowDialog();
+        }
     }
 }

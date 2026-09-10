@@ -8,5 +8,11 @@
         public int ProvinciaId { get; set; } = 0;
         public Provincia? Provincia { get; set; } = null;
         public bool isDeleted { get; set; } = false;
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }
