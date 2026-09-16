@@ -31,6 +31,8 @@
             label1 = new Label();
             tabControl = new TabControl();
             tabPageLista = new TabPage();
+            btnRestaurar = new FontAwesome.Sharp.IconButton();
+            verEliminadosCheck = new CheckBox();
             btnEliminar = new FontAwesome.Sharp.IconButton();
             btnModificar = new FontAwesome.Sharp.IconButton();
             btnNuevo = new FontAwesome.Sharp.IconButton();
@@ -78,6 +80,8 @@
             // 
             // tabPageLista
             // 
+            tabPageLista.Controls.Add(btnRestaurar);
+            tabPageLista.Controls.Add(verEliminadosCheck);
             tabPageLista.Controls.Add(btnEliminar);
             tabPageLista.Controls.Add(btnModificar);
             tabPageLista.Controls.Add(btnNuevo);
@@ -92,6 +96,34 @@
             tabPageLista.TabIndex = 0;
             tabPageLista.Text = "Lista";
             tabPageLista.UseVisualStyleBackColor = true;
+            // 
+            // btnRestaurar
+            // 
+            btnRestaurar.Enabled = false;
+            btnRestaurar.IconChar = FontAwesome.Sharp.IconChar.UserInjured;
+            btnRestaurar.IconColor = Color.IndianRed;
+            btnRestaurar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnRestaurar.IconSize = 20;
+            btnRestaurar.ImageAlign = ContentAlignment.TopCenter;
+            btnRestaurar.Location = new Point(804, 283);
+            btnRestaurar.Name = "btnRestaurar";
+            btnRestaurar.Size = new Size(75, 39);
+            btnRestaurar.TabIndex = 9;
+            btnRestaurar.Text = "Restaurar";
+            btnRestaurar.TextAlign = ContentAlignment.BottomCenter;
+            btnRestaurar.UseVisualStyleBackColor = true;
+            btnRestaurar.Click += btnRestaurar_Click;
+            // 
+            // verEliminadosCheck
+            // 
+            verEliminadosCheck.AutoSize = true;
+            verEliminadosCheck.Location = new Point(794, 237);
+            verEliminadosCheck.Name = "verEliminadosCheck";
+            verEliminadosCheck.Size = new Size(103, 19);
+            verEliminadosCheck.TabIndex = 8;
+            verEliminadosCheck.Text = "Ver eliminados";
+            verEliminadosCheck.UseVisualStyleBackColor = true;
+            verEliminadosCheck.CheckedChanged += verEliminadosCheck_CheckedChanged;
             // 
             // btnEliminar
             // 
@@ -172,6 +204,7 @@
             dataGridClientes.Location = new Point(6, 59);
             dataGridClientes.Name = "dataGridClientes";
             dataGridClientes.ReadOnly = true;
+            dataGridClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridClientes.Size = new Size(782, 286);
             dataGridClientes.TabIndex = 1;
             // 
@@ -190,7 +223,7 @@
             tabPageAgregarEditar.Location = new Point(4, 24);
             tabPageAgregarEditar.Name = "tabPageAgregarEditar";
             tabPageAgregarEditar.Padding = new Padding(3);
-            tabPageAgregarEditar.Size = new Size(957, 351);
+            tabPageAgregarEditar.Size = new Size(897, 351);
             tabPageAgregarEditar.TabIndex = 1;
             tabPageAgregarEditar.Text = "Agregar / Editar";
             tabPageAgregarEditar.UseVisualStyleBackColor = true;
@@ -296,7 +329,7 @@
             MaximizeBox = false;
             Name = "ClientesApiView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Azure API/Clientes";
+            Text = "API/Clientes";
             tabControl.ResumeLayout(false);
             tabPageLista.ResumeLayout(false);
             tabPageLista.PerformLayout();
@@ -330,5 +363,7 @@
         private TextBox txtDireccion;
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnEliminar;
+        private CheckBox verEliminadosCheck;
+        private FontAwesome.Sharp.IconButton btnRestaurar;
     }
 }

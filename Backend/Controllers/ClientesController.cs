@@ -29,6 +29,19 @@ namespace Backend.Controllers
                 .ToListAsync();
         }
 
+        // GET: api/Clientes los borrados
+        [HttpGet("deleteds")]
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetDeleteds()
+        {
+            return await _context.Clientes
+                .IgnoreQueryFilters()  //
+                .Include(c => c.Localidad)
+                .ThenInclude(l => l.Provincia)
+                .ThenInclude(p => p.Pais)
+                .Where(c=>c.isDeleted)  // Filtramos solo los clientes eliminados   
+                .ToListAsync();
+        }
+
         // Devolvemos el total de clientes que no están eliminados
         [HttpGet("total")]
         public async Task<ActionResult<int>> GetTotalClientes()
@@ -99,6 +112,7 @@ namespace Backend.Controllers
         }
 
         // DELETE: api/Clientes/5
+        // DELETE: api/Clientes/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCliente(int id)
         {
@@ -108,7 +122,27 @@ namespace Backend.Controllers
                 return NotFound();
             }
 
-            _context.Clientes.Remove(cliente);
+            cliente.isDeleted = true;
+            _context.Entry(cliente).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // DELETE: api/Clientes/5
+        [HttpPut("restore/{id}")]
+        public async Task<IActionResult> RestoreCliente(int id)
+        {
+            var cliente = await _context.Clientes
+                                .IgnoreQueryFilters()
+                                .FirstOrDefaultAsync(c => c.Id == id);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+
+            cliente.isDeleted = false;
+            _context.Entry(cliente).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();

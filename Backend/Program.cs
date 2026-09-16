@@ -19,8 +19,8 @@ internal class Program
             .AddEnvironmentVariables()
             .Build();
 
-        //var cadenaConexion = configuration.GetConnectionString("postgresLocal");
-        var cadenaConexion = configuration.GetConnectionString("postgresRemote");
+        var cadenaConexion = configuration.GetConnectionString("postgresLocal");
+        //var cadenaConexion = configuration.GetConnectionString("postgresRemote");
 
         builder.Services.AddDbContext<InventarioContext>(
             options => options.UseNpgsql(cadenaConexion));

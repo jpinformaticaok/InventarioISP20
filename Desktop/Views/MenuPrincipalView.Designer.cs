@@ -150,7 +150,7 @@
             subMenuAzure.IconFont = FontAwesome.Sharp.IconFont.Auto;
             subMenuAzure.Name = "subMenuAzure";
             subMenuAzure.Size = new Size(224, 22);
-            subMenuAzure.Text = "Clientes Azure";
+            subMenuAzure.Text = "Clientes Api";
             subMenuAzure.Click += subMenuAzure_Click;
             // 
             // iconMenuItem2
