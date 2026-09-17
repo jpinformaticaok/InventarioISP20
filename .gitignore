@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Desktop/.env
 /Backend/appsettings.json
+/Backend/Program.cs
