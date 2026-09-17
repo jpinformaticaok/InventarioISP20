@@ -6,11 +6,25 @@ namespace Desktop.Views
     public partial class ClientesApiView : Form
     {
         ClientesApiService clientesService = new ClientesApiService();
+        LocalidadesApiService localidadesService = new LocalidadesApiService();
         Cliente? clienteModificado;
         public ClientesApiView()
         {
             InitializeComponent();
             _ = LoadClientes();
+            _ = LoadCbLocalidades();
+        }
+
+        private async Task LoadCbLocalidades()
+        {
+            var localidades = await localidadesService.GetAllAsync();
+            if (localidades != null)
+            {
+                cbLocalidades.DataSource = localidades;
+                cbLocalidades.DisplayMember = "Name";
+                cbLocalidades.ValueMember = "Id";
+                cbLocalidades.SelectedIndex = -1;
+            }
         }
 
         private async Task LoadClientes()
@@ -61,7 +75,7 @@ namespace Desktop.Views
                 Lastname = txtApellido.Text,
                 Dni = txtDni.Text,
                 Address = txtDireccion.Text,
-                LocalidadId = 1
+                LocalidadId = cbLocalidades.SelectedValue != null ? (int)cbLocalidades.SelectedValue : 0
             };
             if (clienteModificado == null)
             {
@@ -71,7 +85,6 @@ namespace Desktop.Views
             {
                 cliente.Id = clienteModificado.Id;
                 cliente.Created_at = clienteModificado.Created_at;
-                cliente.LocalidadId = clienteModificado.LocalidadId;
                 clienteGuardado = await clientesService.UpdateClienteAsync(cliente);
             }
 
@@ -114,6 +127,8 @@ namespace Desktop.Views
             txtApellido.Text = clienteModificado.Lastname;
             txtDni.Text = clienteModificado.Dni;
             txtDireccion.Text = clienteModificado.Address;
+            if (clienteModificado.LocalidadId != 0)
+                cbLocalidades.SelectedValue = clienteModificado.LocalidadId;
             // Cambiamos a la pestaña de agregar/editar
             tabControl.SelectedTab = tabPageAgregarEditar;
         }

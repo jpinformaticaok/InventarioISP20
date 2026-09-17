@@ -16,7 +16,7 @@ namespace Desktop.Views
 
         private void SubMenuSalirDelSistema_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();//this.Close();
         }
 
         private void SubMenuArticulos_Click(object sender, EventArgs e)
