@@ -1,4 +1,5 @@
-﻿using Firebase.Auth;
+﻿using DotNetEnv;
+using Firebase.Auth;
 using Firebase.Auth.Providers;
 
 namespace Desktop.Views
@@ -6,11 +7,15 @@ namespace Desktop.Views
     public partial class IniciarSesionView : Form
     {
         FirebaseAuthClient? firebaseAuthClient;
+        string? authDomain, apiKey;
         int intentos = 0;
 
         public IniciarSesionView()
         {
             InitializeComponent();
+            Env.Load("../../../");
+            authDomain = Environment.GetEnvironmentVariable("AUTHDOMAINFB");
+            apiKey = Environment.GetEnvironmentVariable("APIKEYFIREBASE");
             ConfiguracionFirebaseAuthClient();
         }
 
@@ -18,8 +23,8 @@ namespace Desktop.Views
         {
             var config = new FirebaseAuthConfig
             {
-                ApiKey = "AIzaSyCZwt5YsrJMtpko94WVtP2S45f9ABYYvDM",
-                AuthDomain = "inventarioisp20juampi.firebaseapp.com",
+                ApiKey = apiKey,
+                AuthDomain = authDomain,
                 Providers = new FirebaseAuthProvider[]
                 {
                     new EmailProvider()
@@ -40,7 +45,7 @@ namespace Desktop.Views
                     MessageBox.Show("Usuario o contraseña incorrectos.");
                     return;
                 }
-                MessageBox.Show($"Bienvenido, {user.User}!");
+                MessageBox.Show($"Bienvenido, {txtUsuario.Text}!");
                 this.Hide();
                 var mainView = new MenuPrincipalView();
                 mainView.Show();

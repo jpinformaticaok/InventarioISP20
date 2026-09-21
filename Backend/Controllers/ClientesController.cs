@@ -112,7 +112,6 @@ namespace Backend.Controllers
         }
 
         // DELETE: api/Clientes/5
-        // DELETE: api/Clientes/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCliente(int id)
         {

@@ -41,27 +41,33 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.SignOut;
             btnCancelar.IconColor = Color.Black;
             btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancelar.IconSize = 15;
+            btnCancelar.ImageAlign = ContentAlignment.MiddleRight;
             btnCancelar.Location = new Point(855, 217);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 1;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.TextAlign = ContentAlignment.MiddleLeft;
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
             // btnIniciarSesion
             // 
-            btnIniciarSesion.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnIniciarSesion.IconChar = FontAwesome.Sharp.IconChar.Unlock;
             btnIniciarSesion.IconColor = Color.Black;
             btnIniciarSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnIniciarSesion.Location = new Point(452, 217);
+            btnIniciarSesion.IconSize = 15;
+            btnIniciarSesion.ImageAlign = ContentAlignment.MiddleLeft;
+            btnIniciarSesion.Location = new Point(472, 217);
             btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(117, 23);
+            btnIniciarSesion.Size = new Size(97, 23);
             btnIniciarSesion.TabIndex = 2;
             btnIniciarSesion.Text = "Iniciar Sesión";
+            btnIniciarSesion.TextAlign = ContentAlignment.MiddleRight;
             btnIniciarSesion.UseVisualStyleBackColor = true;
             btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
@@ -132,10 +138,11 @@
             Controls.Add(chkVerPassword);
             Controls.Add(btnIniciarSesion);
             Controls.Add(btnCancelar);
+            MaximizeBox = false;
             MinimizeBox = false;
             Name = "IniciarSesionView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "IniciarSesion";
+            Text = "Iniciar Sesión";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -21,7 +21,11 @@ namespace Backend.Controllers
         public async Task<ActionResult<IEnumerable<Localidad>>> GetLocalidades()
         {
             return await _context.Localidades
-                .Include(l => l.Provincia).ToListAsync();
+                .IgnoreQueryFilters()  // Ignoramos los filtros globales para incluir las localidades eliminadas
+                .Include(l => l.Provincia)
+                .ThenInclude(p => p.Pais)
+                .Where(c => !c.isDeleted)  // Filtramos solo las localidades no eliminadas
+                .ToListAsync();
         }
 
         // GET: api/Localidades/5

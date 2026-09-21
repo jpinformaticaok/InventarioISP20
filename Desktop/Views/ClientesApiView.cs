@@ -196,7 +196,7 @@ namespace Desktop.Views
                 var confirmResult = MessageBox.Show($"¿Está seguro de restaurar al cliente {clienteARestaurar.Firstname} {clienteARestaurar.Lastname}?", "Confirmar restauración", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    bool restauradoOk = await clientesService.RestoreClienteAsync(clienteModificado.Id);
+                    bool restauradoOk = await clientesService.RestoreClienteAsync(clienteARestaurar.Id);
                     if (!restauradoOk)
                     {
                         tabControl.SelectedTab = tabPageLista;
