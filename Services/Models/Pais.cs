@@ -6,7 +6,7 @@ namespace Services.Models
     {
         [Browsable(false)]
         public int? Id { get; set; }
-        [DisplayName("Nombre del país")]
+        [DisplayName("Nombre del Pais")]
         public string Name { get; set; } = string.Empty;
         [Browsable(false)]
         public bool isDeleted { get; set; } = false;

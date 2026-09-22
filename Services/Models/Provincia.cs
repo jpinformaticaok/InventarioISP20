@@ -6,7 +6,7 @@ namespace Services.Models
     {
         [Browsable(false)]
         public int? Id { get; set; }
-        [DisplayName("Nombre de provincia")]
+        [DisplayName("Nombres de la provincia")]
         public string Name { get; set; } = string.Empty;
         [Browsable(false)]
         public int PaisId { get; set; } = 0;

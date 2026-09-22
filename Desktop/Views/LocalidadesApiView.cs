@@ -19,24 +19,36 @@ namespace Desktop.Views
 
         private async Task LoadCbPaises()
         {
-            var paises = await paisesService.GetAllAsync();
+            List<Pais> listaPaises = await paisesService.GetAllAsync();
+
+            // Proyectamos a un objeto anónimo con los nombres de propiedad que queramos
+            var paises = listaPaises
+                .Select(l => new { Id = l.Id, Name = l.Name })
+                .ToList();
+
             if (paises != null)
             {
-                cbPaises.DataSource = paises;
                 cbPaises.DisplayMember = "Name";
                 cbPaises.ValueMember = "Id";
+                cbPaises.DataSource = paises;
                 cbPaises.SelectedIndex = -1;
             }
         }
 
         private async Task LoadCbProvincias()
         {
-            var localidades = await localidadesService.GetAllAsync();
-            if (localidades != null)
+            List<Provincia> listaProvincias = await provinciasService.GetAllAsync();
+
+            // Proyectamos a un objeto anónimo con los nombres de propiedad que queramos
+            var provincias = listaProvincias
+                .Select(l => new { Id = l.Id, Name = l.Name })
+                .ToList();
+
+            if (provincias != null)
             {
-                cbProvincias.DataSource = localidades;
                 cbProvincias.DisplayMember = "Name";
                 cbProvincias.ValueMember = "Id";
+                cbProvincias.DataSource = provincias;
                 cbProvincias.SelectedIndex = -1;
             }
         }
@@ -95,6 +107,7 @@ namespace Desktop.Views
             else
             {
                 localidad.Id = localidadModificada.Id;
+                localidad.ProvinciaId = localidadModificada.ProvinciaId; //Ojo
                 localidadGuardada = await localidadesService.UpdateLocalidadAsync(localidad);
             }
 

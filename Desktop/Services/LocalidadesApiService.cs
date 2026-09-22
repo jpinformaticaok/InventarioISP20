@@ -22,7 +22,7 @@ namespace Desktop.Services
         {
             try
             {
-                var response = await httpClient.GetAsync(urlApi);
+                var response = await httpClient.GetAsync("");
                 if (!response.IsSuccessStatusCode)
                 {
                     throw new Exception("Error al obtener las localidades" + response.ReasonPhrase);
@@ -64,6 +64,7 @@ namespace Desktop.Services
         {
             try
             {
+                //MessageBox.Show($"Filtro: {urlApi}?filtro={filter}");
                 var response = await httpClient.GetAsync($"?filtro={filter}");
                 if (!response.IsSuccessStatusCode)
                 {

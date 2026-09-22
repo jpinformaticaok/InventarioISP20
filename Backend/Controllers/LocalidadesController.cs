@@ -18,13 +18,14 @@ namespace Backend.Controllers
 
         // GET: api/Localidades
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Localidad>>> GetLocalidades()
+        public async Task<ActionResult<IEnumerable<Localidad>>> GetLocalidades([FromQuery] string filtro = "")
         {
+            filtro = filtro.ToUpper();
             return await _context.Localidades
-                .IgnoreQueryFilters()  // Ignoramos los filtros globales para incluir las localidades eliminadas
                 .Include(l => l.Provincia)
                 .ThenInclude(p => p.Pais)
-                .Where(c => !c.isDeleted)  // Filtramos solo las localidades no eliminadas
+                .Where(c => c.Name.ToUpper().Contains(filtro) || c.Provincia.Name.ToUpper().Contains(filtro))
+                .Where(c => !c.isDeleted)  // Filtramos solo las localidades que no están eliminadas
                 .ToListAsync();
         }
 

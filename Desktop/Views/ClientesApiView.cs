@@ -17,13 +17,18 @@ namespace Desktop.Views
 
         private async Task LoadCbLocalidades()
         {
-            var localidades = await localidadesService.GetAllAsync();
+            List<Localidad> listaLocalidades = await localidadesService.GetAllAsync();
+
+            // Proyectamos a un objeto anónimo con los nombres de propiedad que queramos
+            var localidades = listaLocalidades
+                .Select(l => new { Id = l.Id, Name = l.Name })
+                .ToList();
             if (localidades != null)
             {
-                cbLocalidades.DataSource = localidades;
                 cbLocalidades.DisplayMember = "Name";
                 cbLocalidades.ValueMember = "Id";
                 cbLocalidades.SelectedIndex = -1;
+                cbLocalidades.DataSource = localidades;
             }
         }
 
@@ -56,6 +61,7 @@ namespace Desktop.Views
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            ClearTextBox();
             this.tabControl.SelectedTab = tabPageAgregarEditar;
         }
 
@@ -69,13 +75,14 @@ namespace Desktop.Views
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
             bool clienteGuardado;
+            MessageBox.Show($"Localidad seleccionada: {cbLocalidades.SelectedValue} ");
             Cliente cliente = new Cliente
             {
                 Firstname = txtNombre.Text,
                 Lastname = txtApellido.Text,
                 Dni = txtDni.Text,
                 Address = txtDireccion.Text,
-                LocalidadId = cbLocalidades.SelectedValue != null ? (int)cbLocalidades.SelectedValue : 0
+                LocalidadId = cbLocalidades.SelectedValue != null ? (int)cbLocalidades.SelectedValue : 0,
             };
             if (clienteModificado == null)
             {
@@ -111,6 +118,7 @@ namespace Desktop.Views
             txtApellido.Clear();
             txtDni.Clear();
             txtDireccion.Clear();
+            cbLocalidades.SelectedIndex = -1;
         }
 
         private async void btnModificar_Click(object sender, EventArgs e)
@@ -127,8 +135,9 @@ namespace Desktop.Views
             txtApellido.Text = clienteModificado.Lastname;
             txtDni.Text = clienteModificado.Dni;
             txtDireccion.Text = clienteModificado.Address;
-            if (clienteModificado.LocalidadId != 0)
-                cbLocalidades.SelectedValue = clienteModificado.LocalidadId;
+            if (clienteModificado.LocalidadId != 0) {
+                cbLocalidades.SelectedValue = clienteModificado.LocalidadId;           
+            }
             // Cambiamos a la pestaña de agregar/editar
             tabControl.SelectedTab = tabPageAgregarEditar;
         }
