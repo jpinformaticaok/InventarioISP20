@@ -5,8 +5,9 @@ name: Build and deploy ASP.Net Core app to Azure Web App - api-inventario-jp
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
+    paths:
+      - "Backend/**"
   workflow_dispatch:
 
 jobs:
