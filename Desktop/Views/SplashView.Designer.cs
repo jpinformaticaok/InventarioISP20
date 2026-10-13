@@ -85,7 +85,6 @@
             Name = "SplashView";
             Text = "SplashView";
             Activated += SplashView_Activated;
-            Load += SplashView_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
