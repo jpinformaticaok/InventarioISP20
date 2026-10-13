@@ -18,9 +18,13 @@ namespace Backend.Controllers
 
         // GET: api/Paises
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pais>>> GetPais()
+        public async Task<ActionResult<IEnumerable<Pais>>> GetPaises([FromQuery] string filtro = "")
         {
-            return await _context.Paises.ToListAsync();
+            filtro = filtro.ToUpper();
+            return await _context.Paises
+                .Where(p => p.Name.ToUpper().Contains(filtro))
+                .Where(p => !p.isDeleted)  // Filtramos solo los paises que no están eliminados
+                .ToListAsync();
         }
 
         // GET: api/Paises/5
@@ -105,6 +109,35 @@ namespace Backend.Controllers
         public async Task<ActionResult<int>> GetTotalPaises()
         {
             return await _context.Paises.CountAsync(c => !c.isDeleted);
+        }
+
+        // GET: api/Paises los borrados
+        [HttpGet("deleteds")]
+        public async Task<ActionResult<IEnumerable<Pais>>> GetDeleteds()
+        {
+            return await _context.Paises
+                .IgnoreQueryFilters()  //
+                .Where(c => c.isDeleted)  // Filtramos solo los paises eliminados
+                .ToListAsync();
+        }
+
+        // PUT: api/Paises/restore/5
+        [HttpPut("restore/{id}")]
+        public async Task<IActionResult> RestorePais(int id)
+        {
+            var pais = await _context.Paises
+                                .IgnoreQueryFilters()
+                                .FirstOrDefaultAsync(c => c.Id == id);
+            if (pais == null)
+            {
+                return NotFound();
+            }
+
+            pais.isDeleted = false;
+            _context.Entry(pais).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

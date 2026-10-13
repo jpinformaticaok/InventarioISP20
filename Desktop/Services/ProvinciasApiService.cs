@@ -22,7 +22,7 @@ namespace Desktop.Services
         {
             try
             {
-                var response = await httpClient.GetAsync(urlApi);
+                var response = await httpClient.GetAsync("");
                 if (!response.IsSuccessStatusCode)
                 {
                     throw new Exception("Error al obtener las provincias" + response.ReasonPhrase);

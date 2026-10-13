@@ -1,3 +1,5 @@
+using Desktop.ViewReports;
+
 namespace Desktop.Views
 {
     public partial class MenuPrincipalView : Form
@@ -82,6 +84,24 @@ namespace Desktop.Views
         {
             LocalidadesApiView localidadesApiView = new();
             localidadesApiView.ShowDialog();
+        }
+
+        private void subMenuPaisesApi_Click(object sender, EventArgs e)
+        {
+            PaisesApiView paisesApiView = new();
+            paisesApiView.ShowDialog();
+        }
+
+        private void subMenuProvinciasApi_Click(object sender, EventArgs e)
+        {
+            ProvinciasApiView provinciasApiView = new();
+            provinciasApiView.ShowDialog();
+        }
+
+        private void subMenuListadoClientes_Click(object sender, EventArgs e)
+        {
+            ClientesViewReport clientesViewReport = new();
+            clientesViewReport.ShowDialog();
         }
     }
 }

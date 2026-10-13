@@ -18,10 +18,13 @@ namespace Backend.Controllers
 
         // GET: api/Provincias
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Provincia>>> GetProvincias()
+        public async Task<ActionResult<IEnumerable<Provincia>>> GetProvincias([FromQuery] string filtro = "")
         {
+            filtro = filtro.ToUpper();
             return await _context.Provincias
                 .Include(p => p.Pais) // Incluimos la entidad relacionada Pais
+                .Where(p => p.Name.ToUpper().Contains(filtro) || p.Pais.Name.ToUpper().Contains(filtro))
+                .Where(p => !p.isDeleted)  // Filtramos solo las provincias que no están eliminadas
                 .ToListAsync();
         }
 
@@ -107,6 +110,36 @@ namespace Backend.Controllers
         public async Task<ActionResult<int>> GetTotalProvincias()
         {
             return await _context.Provincias.CountAsync(c => !c.isDeleted);
+        }
+
+        // GET: api/Provincias los borrados
+        [HttpGet("deleteds")]
+        public async Task<ActionResult<IEnumerable<Provincia>>> GetDeleteds()
+        {
+            return await _context.Provincias
+                .IgnoreQueryFilters()  //
+                .Include(p => p.Pais)
+                .Where(c => c.isDeleted)  // Filtramos solo las provincias eliminadas
+                .ToListAsync();
+        }
+
+        // PUT: api/Provincias/restore/5
+        [HttpPut("restore/{id}")]
+        public async Task<IActionResult> RestoreProvincia(int id)
+        {
+            var provincia = await _context.Provincias
+                                .IgnoreQueryFilters()
+                                .FirstOrDefaultAsync(c => c.Id == id);
+            if (provincia == null)
+            {
+                return NotFound();
+            }
+
+            provincia.isDeleted = false;
+            _context.Entry(provincia).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

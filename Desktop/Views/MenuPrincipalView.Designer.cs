@@ -39,15 +39,19 @@
             subMenuGemini = new FontAwesome.Sharp.IconMenuItem();
             subMenuOpenrouter = new FontAwesome.Sharp.IconMenuItem();
             subMenuAzure = new FontAwesome.Sharp.IconMenuItem();
+            subMenuLocalidadesApi = new FontAwesome.Sharp.IconMenuItem();
+            subMenuPaisesApi = new FontAwesome.Sharp.IconMenuItem();
+            subMenuProvinciasApi = new FontAwesome.Sharp.IconMenuItem();
+            subMenuReportes = new FontAwesome.Sharp.IconMenuItem();
+            subMenuListadoClientes = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             SubMenuSalirDelSistema = new FontAwesome.Sharp.IconMenuItem();
-            subMenuLocalidadesApi = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { iconMenuItem1, iconMenuItem2 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iconMenuItem1, subMenuReportes, iconMenuItem2 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -56,7 +60,7 @@
             // 
             // iconMenuItem1
             // 
-            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubMenuCategorias, SubMenuPrestamos, SubMenuUbicaciones, subMenuClientes, subMenuEquipos, subMenuGemini, subMenuOpenrouter, subMenuAzure, subMenuLocalidadesApi });
+            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubMenuCategorias, SubMenuPrestamos, SubMenuUbicaciones, subMenuClientes, subMenuEquipos, subMenuGemini, subMenuOpenrouter, subMenuAzure, subMenuLocalidadesApi, subMenuPaisesApi, subMenuProvinciasApi });
             iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.House;
             iconMenuItem1.IconColor = Color.Black;
             iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -154,6 +158,56 @@
             subMenuAzure.Text = "Clientes Api";
             subMenuAzure.Click += subMenuAzure_Click;
             // 
+            // subMenuLocalidadesApi
+            // 
+            subMenuLocalidadesApi.IconChar = FontAwesome.Sharp.IconChar.Location;
+            subMenuLocalidadesApi.IconColor = Color.Black;
+            subMenuLocalidadesApi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuLocalidadesApi.Name = "subMenuLocalidadesApi";
+            subMenuLocalidadesApi.Size = new Size(224, 22);
+            subMenuLocalidadesApi.Text = "Localidades Api";
+            subMenuLocalidadesApi.Click += subMenuLocalidadesApi_Click;
+            // 
+            // subMenuPaisesApi
+            // 
+            subMenuPaisesApi.IconChar = FontAwesome.Sharp.IconChar.Flag;
+            subMenuPaisesApi.IconColor = Color.Black;
+            subMenuPaisesApi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuPaisesApi.Name = "subMenuPaisesApi";
+            subMenuPaisesApi.Size = new Size(224, 22);
+            subMenuPaisesApi.Text = "Paises Api";
+            subMenuPaisesApi.Click += subMenuPaisesApi_Click;
+            // 
+            // subMenuProvinciasApi
+            // 
+            subMenuProvinciasApi.IconChar = FontAwesome.Sharp.IconChar.Map;
+            subMenuProvinciasApi.IconColor = Color.Black;
+            subMenuProvinciasApi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuProvinciasApi.Name = "subMenuProvinciasApi";
+            subMenuProvinciasApi.Size = new Size(224, 22);
+            subMenuProvinciasApi.Text = "Provincias Api";
+            subMenuProvinciasApi.Click += subMenuProvinciasApi_Click;
+            // 
+            // subMenuReportes
+            // 
+            subMenuReportes.DropDownItems.AddRange(new ToolStripItem[] { subMenuListadoClientes });
+            subMenuReportes.IconChar = FontAwesome.Sharp.IconChar.Print;
+            subMenuReportes.IconColor = Color.Black;
+            subMenuReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuReportes.Name = "subMenuReportes";
+            subMenuReportes.Size = new Size(81, 20);
+            subMenuReportes.Text = "Reportes";
+            // 
+            // subMenuListadoClientes
+            // 
+            subMenuListadoClientes.IconChar = FontAwesome.Sharp.IconChar.PersonWalkingLuggage;
+            subMenuListadoClientes.IconColor = Color.Black;
+            subMenuListadoClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuListadoClientes.Name = "subMenuListadoClientes";
+            subMenuListadoClientes.Size = new Size(180, 22);
+            subMenuListadoClientes.Text = "Listado de Clientes";
+            subMenuListadoClientes.Click += subMenuListadoClientes_Click;
+            // 
             // iconMenuItem2
             // 
             iconMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { SubMenuSalirDelSistema });
@@ -173,16 +227,6 @@
             SubMenuSalirDelSistema.Size = new Size(167, 22);
             SubMenuSalirDelSistema.Text = "Salir del sistema...";
             SubMenuSalirDelSistema.Click += SubMenuSalirDelSistema_Click;
-            // 
-            // subMenuLocalidadesApi
-            // 
-            subMenuLocalidadesApi.IconChar = FontAwesome.Sharp.IconChar.Location;
-            subMenuLocalidadesApi.IconColor = Color.Black;
-            subMenuLocalidadesApi.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            subMenuLocalidadesApi.Name = "subMenuLocalidadesApi";
-            subMenuLocalidadesApi.Size = new Size(224, 22);
-            subMenuLocalidadesApi.Text = "Localidades Api";
-            subMenuLocalidadesApi.Click += subMenuLocalidadesApi_Click;
             // 
             // MenuPrincipalView
             // 
@@ -216,5 +260,9 @@
         private FontAwesome.Sharp.IconMenuItem subMenuOpenrouter;
         private FontAwesome.Sharp.IconMenuItem subMenuAzure;
         private FontAwesome.Sharp.IconMenuItem subMenuLocalidadesApi;
+        private FontAwesome.Sharp.IconMenuItem subMenuPaisesApi;
+        private FontAwesome.Sharp.IconMenuItem subMenuProvinciasApi;
+        private FontAwesome.Sharp.IconMenuItem subMenuReportes;
+        private FontAwesome.Sharp.IconMenuItem subMenuListadoClientes;
     }
 }
